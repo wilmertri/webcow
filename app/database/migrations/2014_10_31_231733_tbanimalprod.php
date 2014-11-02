@@ -13,7 +13,7 @@ class Tbanimalprod extends Migration {
 	public function up()
 	{
 		Schema::create('tbanimalprod',function($table){
-            $table->integer('numanimal');
+            $table->integer('numanimal')->unsigned();
             $table->string('nombre',30);
             $table->date('fechanac');
             $table->integer('pesoanimal');
@@ -28,6 +28,7 @@ class Tbanimalprod extends Migration {
             $table->foreign('idestado')->references('idestado')->on('tbestadoanimal');
             $table->integer('idtipoanimal')->unsigned();
             $table->foreign('idtipoanimal')->references('idtipoanimal')->on('tbtipoanimal');
+            $table->primary('numanimal');
             $table->timestamps();
         });//
 	}
