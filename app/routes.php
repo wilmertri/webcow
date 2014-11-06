@@ -28,3 +28,5 @@ Route::group(array('before' => 'auth'), function()
     // Esta ruta nos servirá para cerrar sesión.
     Route::get('logout', 'AuthController@logOut');
 });
+
+Route::resource('admin/users','Admin_UsersController');

@@ -12,7 +12,7 @@ class Tbusuario extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tbusuario',function($table){
+		Schema::create('users',function($table){
             $table->string('documento',10);
             $table->string('nombre',30);
             $table->string('apellido',30);
@@ -20,6 +20,7 @@ class Tbusuario extends Migration {
             $table->string('telefono',30);
             $table->string('password');
             $table->tinyInteger('estado');
+            $table->primary('documento');
             $table->integer('idrol')->unsigned();
             $table->foreign('idrol')->references('idrol')->on('tbrol');
             $table->timestamps();
@@ -33,7 +34,7 @@ class Tbusuario extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbusuario');////
+		Schema::drop('users');////
 	}
 
 }

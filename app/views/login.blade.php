@@ -16,8 +16,8 @@
                     {{ Form::open(array('url' => '/login')) }}
                         <legend>Iniciar sesión</legend>
                         <div class="form-group">
-                            {{ Form::label('email', 'Email de usuario') }}
-                            {{ Form::text('email', Input::get('email'), array('class' => 'form-control')); }}
+                            {{ Form::label('email', 'Email') }}
+                            {{ Form::text('email', null, array('name' => 'email', 'id' => 'email', 'class' => 'form-control') ) }}
                         </div>
                         <div class="form-group">
                             {{ Form::label('contraseña', 'Contraseña') }}
@@ -35,6 +35,6 @@
             </div>
         </div>
         <script src="https://code.jquery.com/jquery.js"></script>
-        {{ HTML::script('../../bootstrap/js/bootstrap.js'); }}
+        {{ HTML::script('js/bootstrap.js'); }}
     </body>
 </html>
