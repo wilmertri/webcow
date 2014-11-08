@@ -29,7 +29,9 @@ class Tbhato extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbhato');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+		Schema::dropIfExists('tbhato');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }

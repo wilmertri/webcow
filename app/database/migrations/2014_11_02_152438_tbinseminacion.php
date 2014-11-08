@@ -31,7 +31,9 @@ class Tbinseminacion extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbinseminacion');
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+		Schema::dropIfExists('tbinseminacion');
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }

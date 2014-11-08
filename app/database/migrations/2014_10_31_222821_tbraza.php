@@ -27,7 +27,9 @@ class Tbraza extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbraza');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+		Schema::dropIfExists('tbraza');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }

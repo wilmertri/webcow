@@ -33,7 +33,9 @@ class Tbhistorial extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbhistorial');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+		Schema::dropIfExists('tbhistorial');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }

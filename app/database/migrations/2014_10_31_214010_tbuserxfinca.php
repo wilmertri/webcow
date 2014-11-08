@@ -14,8 +14,8 @@ class Tbuserxfinca extends Migration {
 	{
 		Schema::create('tbuserxfinca',function($table){
             $table->increments('iduserxfinca');
-            $table->string('documento',10);
-            $table->foreign('documento')->references('documento')->on('users');
+            $table->integer('iduser')->unsigned();
+            $table->foreign('iduser')->references('id')->on('users');
             $table->integer('idfinca')->unsigned();
             $table->foreign('idfinca')->references('idfinca')->on('tbfinca');
             $table->timestamps();
@@ -29,7 +29,9 @@ class Tbuserxfinca extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbuserxfinca');////
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+		Schema::dropIfExists('tbuserxfinca');////
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }

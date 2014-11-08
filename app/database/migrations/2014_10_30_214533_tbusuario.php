@@ -13,14 +13,13 @@ class Tbusuario extends Migration {
 	public function up()
 	{
 		Schema::create('users',function($table){
+			$table->increments('id');
             $table->string('documento',10);
             $table->string('nombre',30);
-            $table->string('apellido',30);
             $table->string('email',100)->unique();
             $table->string('telefono',30);
             $table->string('password');
             $table->tinyInteger('estado');
-            $table->primary('documento');
             $table->integer('idrol')->unsigned();
             $table->foreign('idrol')->references('idrol')->on('tbrol');
             $table->timestamps();
@@ -34,7 +33,9 @@ class Tbusuario extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('users');////
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+		Schema::dropIfExists('users');////
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }

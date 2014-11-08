@@ -20,7 +20,10 @@ class Admin_UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin/users/form');//
+		//Creamos un nuevo objeto User para ser usado por el helper Form::model
+		$user = new User;
+		$rol = new Rol;
+		return View::make('admin/users/form')->with('user',$user);//
 	}
 
 
@@ -33,10 +36,13 @@ class Admin_UsersController extends \BaseController {
 	{
 		//Creamos un nuevo objeto para nuestro nuevo usuario
 		$user = new User;
-
+		//return Input::all();
+		
 		//Obtenemos la data enviada por el usuario
+		
 		$data = Input::all(); //
-
+		//var_dump($data);
+		
 		//Revisamos si la data es valida
 		if($user->isValid($data))
 		{
@@ -47,10 +53,12 @@ class Admin_UsersController extends \BaseController {
 			//Y devolvemos una redirección a la acción show para mostrar el usuario
 			return Redirect::route('admin.users.show', array($user->id));
 		}
-		else{
+		else
+		{
 			// En caso de error regresa a la acción create con los datos y los errores encontrados
 			return Redirect::route('admin.users.create')->withInput()->withErrors($user->errors);
 		}
+		
 	}
 
 

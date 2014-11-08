@@ -40,7 +40,9 @@ class Tbanimalprod extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbanimalprod');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+		Schema::dropIfExists('tbanimalprod');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }

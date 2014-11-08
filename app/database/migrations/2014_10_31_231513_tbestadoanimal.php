@@ -27,7 +27,9 @@ class Tbestadoanimal extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbestadoanimal');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+		Schema::dropIfExists('tbestadoanimal');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }

@@ -27,7 +27,9 @@ class Tbciudad extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbciudad');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+		Schema::dropIfExists('tbciudad');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }

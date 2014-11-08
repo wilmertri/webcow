@@ -26,7 +26,9 @@ class Tbrol extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbrol');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+		Schema::dropIfExists('tbrol');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }

@@ -30,7 +30,9 @@ class Tbproduccion extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbproduccion');
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+		Schema::dropIfExists('tbproduccion');
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }

@@ -27,7 +27,9 @@ class Tbtipoanimal extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbtipoanimal');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+		Schema::dropIfExists('tbtipoanimal');//
+		DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }
